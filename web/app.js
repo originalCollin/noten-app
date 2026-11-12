@@ -650,7 +650,7 @@ function oeffneInfoSheet() {
       knopf: 'Zurücksetzen',
     });
     if (!ok) return;
-    stand = C.normalisiere(STARTDATEN);
+    stand = C.normalisiere({ faecher: [] });
     schliesse();
     geaendert({ neuZeichnen: true });
     zeigeHinweis('Alle Daten gelöscht');

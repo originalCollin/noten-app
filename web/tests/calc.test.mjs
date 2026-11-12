@@ -76,9 +76,12 @@ for (const sz of tc.szenarien) {
   test(`Szenario: ${sz.name} – ${sz.beschreibung}`, () => pruefeSzenario(sz));
 }
 
-test('Die Web-App startet leer (keine Noten im Code)', () => {
-  assert.deepEqual(STARTDATEN.faecher, []);
-  assert.deepEqual(normalisiere(STARTDATEN).pruefungen, [null, null, null, null]);
+test('Startdaten der Web-App ergeben die Kontrollwerte (517 / 260 / 777 / 1,3 / Ø 12,6)', () => {
+  const e = berechne(STARTDATEN);
+  assert.deepEqual([e.blockI, e.blockII, e.gesamt, e.noteZehntel, e.status], [517, 260, 777, 13, 'ok']);
+  assert.equal(e.ziel.schnittZehntel, 126);
+  assert.equal(e.anzahlEingebracht, 40);
+  assert.deepEqual(e.faecher.find((f) => f.name === 'Russisch ab EF').kurse.map((k) => k.eingebracht), [true, true, true, true]);
 });
 
 test('Export und Import ergeben wieder denselben Stand', () => {

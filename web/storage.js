@@ -29,7 +29,7 @@ export function lade() {
     try {
       localStorage.setItem(SCHLUESSEL_KAPUTT, text);
     } catch { /* nichts zu tun */ }
-    return { stand: normalisiere(STARTDATEN), hinweis: 'Die gespeicherten Daten waren beschädigt. Die App startet deshalb leer.' };
+    return { stand: normalisiere(STARTDATEN), hinweis: 'Die gespeicherten Daten waren beschädigt. Es wurden die Startdaten geladen.' };
   }
 }
 

@@ -1,0 +1,383 @@
+/* ==========================================================================
+   styles.css – Aussehen der Web-App im Apple-Stil (iOS-Designsprache)
+   Farben sind "semantisch" benannt und haben je einen Wert für Hell und Dunkel.
+   ========================================================================== */
+
+:root {
+  /* Hintergründe wie in iOS-Einstellungen ("grouped") */
+  --hintergrund: #f2f2f7;
+  --zelle: #ffffff;
+  --zelle-gedrueckt: #e5e5ea;
+  --feld: rgba(118, 118, 128, 0.12);
+  --trenner: rgba(60, 60, 67, 0.2);
+  --leiste: rgba(249, 249, 249, 0.82);
+
+  /* Text */
+  --text: #000000;
+  --text-2: rgba(60, 60, 67, 0.62);
+  --text-3: rgba(60, 60, 67, 0.34);
+
+  /* Farben mit Bedeutung */
+  --akzent: #5856d6;      /* Indigo: Akzentfarbe der App */
+  --akzent-zart: rgba(88, 86, 214, 0.13);
+  --akzent-text: #4f4dc8; /* etwas dunkler, für kleinen Text auf hellem Grund */
+  --lk: #ff9500;          /* Orange: Leistungskurs */
+  --lk-zart: rgba(255, 149, 0, 0.16);
+  --lk-text: #a15c00;
+  --gut: #248a3d;         /* Grün: bestanden / erfüllt */
+  --gut-flaeche: #34c759;
+  --schlecht: #d70015;    /* Rot: nicht bestanden / verletzt */
+  --schlecht-flaeche: #ff3b30;
+  --grau-flaeche: rgba(120, 120, 128, 0.16);
+
+  --radius: 12px;
+  --rand: 16px;
+  --tab-hoehe: 50px;
+  --unten: env(safe-area-inset-bottom, 0px);
+  --oben: env(safe-area-inset-top, 0px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --hintergrund: #000000;
+    --zelle: #1c1c1e;
+    --zelle-gedrueckt: #2c2c2e;
+    --feld: rgba(118, 118, 128, 0.24);
+    --trenner: rgba(84, 84, 88, 0.6);
+    --leiste: rgba(22, 22, 24, 0.8);
+    --text: #ffffff;
+    --text-2: rgba(235, 235, 245, 0.62);
+    --text-3: rgba(235, 235, 245, 0.32);
+    --akzent: #7d7aff;
+    --akzent-zart: rgba(125, 122, 255, 0.22);
+    --akzent-text: #a5a3ff;
+    --lk: #ff9f0a;
+    --lk-zart: rgba(255, 159, 10, 0.22);
+    --lk-text: #ffb340;
+    --gut: #30d158;
+    --gut-flaeche: #30d158;
+    --schlecht: #ff6961;
+    --schlecht-flaeche: #ff453a;
+    --grau-flaeche: rgba(120, 120, 128, 0.32);
+  }
+}
+
+/* ---------- Grundlagen ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  /* Systemschrift. "-apple-system-body" folgt auf dem iPhone der eingestellten
+     Textgröße (Dynamic Type); alle Größen unten sind relativ dazu (rem). */
+  font: -apple-system-body;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  background: var(--hintergrund);
+  color: var(--text);
+  height: 100%;
+}
+@supports not (font: -apple-system-body) {
+  html { font-size: 17px; }
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  line-height: 1.3;
+  overflow: hidden;              /* gescrollt wird nur im Inhaltsbereich */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+button, input, select { font: inherit; color: inherit; }
+button { background: none; border: 0; padding: 0; cursor: pointer; touch-action: manipulation; }
+h1, h2, h3, p { margin: 0; }
+
+.zahl { font-variant-numeric: tabular-nums; }
+.nur-vorlesen {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+
+:focus-visible { outline: 3px solid var(--akzent); outline-offset: 2px; border-radius: 6px; }
+input:focus-visible { outline-offset: 0; }
+
+#app { height: 100%; display: flex; flex-direction: column; max-width: 640px; margin: 0 auto; position: relative; }
+
+/* ---------- Inhaltsbereich ---------- */
+
+#ansicht {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  padding: calc(var(--oben) + 8px) calc(var(--rand) + env(safe-area-inset-right, 0px))
+           calc(var(--tab-hoehe) + var(--unten) + 32px) calc(var(--rand) + env(safe-area-inset-left, 0px));
+  outline: none;
+}
+
+/* Schmale Titelleiste (erscheint beim Scrollen) */
+.leiste {
+  position: absolute; inset: 0 0 auto 0; z-index: 5;
+  height: calc(var(--oben) + 44px); padding-top: var(--oben);
+  display: flex; align-items: center; justify-content: center;
+  background: var(--leiste);
+  -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid var(--trenner);
+  font-weight: 600;
+  opacity: 0; pointer-events: none; transition: opacity 0.18s;
+}
+.leiste.sichtbar { opacity: 1; }
+
+.kopf { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; min-height: 44px; margin: 0 4px 8px; }
+.grosser-titel { font-size: 2rem; font-weight: 700; letter-spacing: 0.01em; }
+.kopf-aktionen { display: flex; gap: 4px; position: relative; z-index: 6; }
+.symbol-knopf {
+  width: 44px; height: 44px; display: grid; place-items: center; color: var(--akzent); border-radius: 22px;
+}
+.symbol-knopf:active { opacity: 0.4; }
+.symbol-knopf svg { width: 26px; height: 26px; }
+
+/* ---------- Gruppen und Zellen (wie iOS-Listen) ---------- */
+
+.abschnitt { margin-top: 22px; }
+.abschnitt-titel {
+  font-size: 0.8rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.02em;
+  color: var(--text-2); margin: 0 16px 7px;
+}
+.abschnitt-fuss { font-size: 0.8rem; color: var(--text-2); margin: 7px 16px 0; }
+.gruppe { background: var(--zelle); border-radius: var(--radius); overflow: hidden; }
+.zelle {
+  display: flex; align-items: center; gap: 12px;
+  min-height: 44px; padding: 10px 16px; position: relative;
+}
+.zelle + .zelle::before, .fach + .fach::before, .zeile-trenner::before {
+  content: ""; position: absolute; top: 0; left: 16px; right: 0; height: 0.5px; background: var(--trenner);
+}
+.zelle .titel { flex: 1; min-width: 0; }
+.zelle .wert { color: var(--text-2); text-align: right; }
+.zelle .neben { font-size: 0.8rem; color: var(--text-2); margin-top: 2px; }
+button.zelle { width: 100%; text-align: left; }
+button.zelle:active { background: var(--zelle-gedrueckt); }
+.zelle.aktion { color: var(--akzent); }
+.zelle.gefahr { color: var(--schlecht); }
+.zelle.mitte { justify-content: center; }
+
+/* ---------- Übersicht ---------- */
+
+.held { padding: 22px 16px 20px; text-align: center; }
+.held .label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-2); }
+.held .note {
+  font-family: ui-rounded, "SF Pro Rounded", -apple-system, system-ui, sans-serif;
+  font-size: 5.2rem; font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; margin: 2px 0 4px;
+  font-variant-numeric: tabular-nums;
+}
+.held .note.text { font-size: 1.65rem; line-height: 1.2; margin: 18px 0 14px; color: var(--schlecht); }
+.held .note.neu { animation: aufploppen 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2); }
+@keyframes aufploppen { from { transform: scale(0.86); opacity: 0.3; } to { transform: none; opacity: 1; } }
+.held .unter { color: var(--text-2); font-size: 0.94rem; }
+.kapsel {
+  display: inline-flex; align-items: center; gap: 5px; margin-top: 12px; padding: 4px 11px; border-radius: 99px;
+  font-size: 0.8rem; font-weight: 600; background: var(--akzent-zart); color: var(--akzent-text);
+}
+.kapsel.gut { background: color-mix(in srgb, var(--gut-flaeche) 18%, transparent); color: var(--gut); }
+.kapsel svg { width: 14px; height: 14px; }
+
+.block { display: block; padding: 12px 16px 14px; }
+.block .oben { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+.block .oben .wert { color: var(--text-2); }
+.block .oben .wert b { color: var(--text); font-weight: 600; }
+.balken { height: 8px; border-radius: 4px; background: var(--grau-flaeche); overflow: hidden; }
+.balken > i { display: block; height: 100%; border-radius: 4px; background: var(--akzent); transition: width 0.45s ease; }
+
+.auswahl {
+  appearance: none; -webkit-appearance: none; border: 0; border-radius: 8px; background: var(--feld);
+  padding: 7px 30px 7px 12px; color: var(--akzent-text); font-weight: 600;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 16'%3E%3Cpath d='M2 6l4-4 4 4M2 10l4 4 4-4' fill='none' stroke='%238e8e93' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 10px center; background-size: 9px;
+  max-width: 60vw;
+}
+.ziel-ergebnis { font-weight: 600; }
+.ziel-ergebnis.gut { color: var(--gut); }
+.ziel-ergebnis.schlecht { color: var(--schlecht); }
+
+.haken { width: 24px; height: 24px; flex: none; }
+.haken.ja { color: var(--gut-flaeche); }
+.haken.nein { color: var(--schlecht-flaeche); }
+
+/* ---------- Kurse ---------- */
+
+.fach { position: relative; overflow: hidden; }
+.fach-inhalt { background: var(--zelle); position: relative; z-index: 1; transition: transform 0.2s ease; touch-action: pan-y; }
+.fach-inhalt.zieht { transition: none; }
+.fach-kopf { display: flex; align-items: center; gap: 8px; width: 100%; text-align: left; padding: 8px 12px 2px 16px; min-height: 44px; }
+.fach-kopf:active { opacity: 0.55; }
+.fach-name { font-weight: 600; flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.fach-schnitt { color: var(--text-2); white-space: nowrap; }
+.fach-schnitt.prognose { font-style: italic; }
+.pfeil { width: 8px; height: 14px; color: var(--text-3); flex: none; }
+.marken { display: flex; flex-wrap: wrap; gap: 5px; padding: 0 16px 6px; }
+.marke {
+  font-size: 0.7rem; font-weight: 600; padding: 2px 7px; border-radius: 6px;
+  background: var(--grau-flaeche); color: var(--text-2); white-space: nowrap;
+}
+.marke.lk { background: var(--lk-zart); color: var(--lk-text); }
+.marke.abi, .marke.profil { background: var(--akzent-zart); color: var(--akzent-text); }
+
+.halbjahre { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 0 16px 12px; }
+.halbjahr { text-align: center; transition: opacity 0.2s; }
+.halbjahr label, .halbjahr .hj { display: block; font-size: 0.68rem; color: var(--text-2); margin-bottom: 2px; }
+.halbjahr.aus { opacity: 0.38; }             /* nicht eingebracht: abgeschwächt */
+.halbjahr .gesperrt { height: 36px; display: grid; place-items: center; color: var(--text-3); }
+
+.punkte {
+  width: 100%; height: 36px; border: 0; border-radius: 9px; background: var(--feld);
+  text-align: center; font-size: 1.12rem; font-weight: 600; font-variant-numeric: tabular-nums;
+  padding: 0 4px; -moz-appearance: textfield; caret-color: var(--akzent);
+}
+.punkte:focus { outline: 2px solid var(--akzent); }
+/* Prognose: steht als Platzhalter im leeren Feld – kursiv, blasser, mit "≈" davor */
+.punkte::placeholder { color: var(--text-2); font-style: italic; font-weight: 400; opacity: 1; }
+.punkte.schmal { width: 68px; height: 40px; flex: none; }
+
+.loeschen-flaeche {
+  position: absolute; top: 0; right: 0; bottom: 0; width: 92px; background: var(--schlecht-flaeche); color: #fff;
+  font-weight: 500; display: grid; place-items: center; visibility: hidden;
+}
+.fach.wischt .loeschen-flaeche { visibility: visible; }
+
+.leer { text-align: center; color: var(--text-2); padding: 34px 20px; }
+
+/* ---------- Prüfungen ---------- */
+
+.pruefung { padding: 14px 16px; }
+.pruefung .oben { display: flex; align-items: center; gap: 12px; }
+.pruefung .nr {
+  width: 34px; height: 34px; border-radius: 17px; flex: none; display: grid; place-items: center;
+  font-weight: 700; background: var(--akzent-zart); color: var(--akzent-text);
+}
+.pruefung .nr.lk { background: var(--lk-zart); color: var(--lk-text); }
+.pruefung .name { font-weight: 600; overflow-wrap: anywhere; }
+.pruefung .art { font-size: 0.8rem; color: var(--text-2); margin-top: 1px; }
+.pruefung .rechnung { margin-top: 10px; color: var(--text-2); font-size: 0.88rem; display: flex; justify-content: space-between; gap: 8px; }
+.pruefung .rechnung b { color: var(--text); font-weight: 600; }
+.pruefung .rechnung .prognose { font-style: italic; }
+
+.tabelle { display: grid; grid-template-columns: repeat(6, 1fr); text-align: center; }
+.tabelle > div { padding: 10px 2px; position: relative; }
+.tabelle > div + div::before { content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 0.5px; background: var(--trenner); }
+.tabelle .n { font-size: 1.3rem; font-weight: 700; }
+.tabelle .p { font-size: 0.75rem; color: var(--text-2); }
+
+/* ---------- Tab-Leiste ---------- */
+
+.tabbar {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 10;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  padding: 0 env(safe-area-inset-right, 0px) var(--unten) env(safe-area-inset-left, 0px);
+  background: var(--leiste);
+  -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px);
+  border-top: 0.5px solid var(--trenner);
+}
+.tab {
+  height: var(--tab-hoehe); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  color: var(--text-2); font-size: 10px; font-weight: 500;   /* feste Größe wie in iOS-Tab-Leisten */
+}
+.tab svg { width: 26px; height: 26px; }
+.tab[aria-current="page"] { color: var(--akzent); }
+
+/* ---------- Sheets und Dialoge ---------- */
+
+.schleier {
+  position: fixed; inset: 0; z-index: 50; background: rgba(0, 0, 0, 0.4);
+  display: flex; align-items: flex-end; justify-content: center;
+  animation: einblenden 0.2s ease;
+}
+@keyframes einblenden { from { opacity: 0; } }
+.sheet {
+  width: 100%; max-width: 640px; max-height: calc(100% - var(--oben) - 12px);
+  background: var(--hintergrund); border-radius: 14px 14px 0 0;
+  display: flex; flex-direction: column;
+  animation: hochfahren 0.32s cubic-bezier(0.2, 0.85, 0.25, 1);
+}
+@keyframes hochfahren { from { transform: translateY(100%); } }
+/* Im Dunkelmodus liegen Sheets eine Stufe heller über dem schwarzen Hintergrund (wie in iOS). */
+@media (prefers-color-scheme: dark) {
+  .sheet { --hintergrund: #1c1c1e; --zelle: #2c2c2e; --zelle-gedrueckt: #3a3a3c; }
+  .aktionsblatt { --zelle: #2c2c2e; --zelle-gedrueckt: #3a3a3c; }
+}
+.sheet-kopf {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  min-height: 56px; padding: 6px 8px; border-bottom: 0.5px solid var(--trenner);
+}
+.sheet-kopf h2 { font-size: 1rem; font-weight: 600; text-align: center; }
+.sheet-kopf button { color: var(--akzent); min-height: 44px; padding: 0 8px; }
+.sheet-kopf button:active { opacity: 0.4; }
+.sheet-kopf .rechts { justify-self: end; font-weight: 600; }
+.sheet-kopf .links { justify-self: start; }
+.sheet-kopf button:disabled { color: var(--text-3); }
+.sheet-inhalt { overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 0 var(--rand) calc(var(--unten) + 28px); }
+
+.text-feld { flex: 1; min-width: 0; border: 0; background: none; padding: 0; text-align: right; outline: none; }
+.text-feld.links { text-align: left; }
+.text-feld::placeholder { color: var(--text-3); }
+
+/* Schalter wie in iOS */
+.schalter { appearance: none; -webkit-appearance: none; width: 51px; height: 31px; border-radius: 16px; background: var(--grau-flaeche); position: relative; flex: none; margin: 0; transition: background 0.2s; cursor: pointer; }
+.schalter::after { content: ""; position: absolute; top: 2px; left: 2px; width: 27px; height: 27px; border-radius: 50%; background: #fff; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25); transition: transform 0.2s; }
+.schalter:checked { background: var(--gut-flaeche); }
+.schalter:checked::after { transform: translateX(20px); }
+.schalter:disabled { opacity: 0.5; }
+
+/* Segment-Auswahl wie in iOS */
+.segmente { display: flex; background: var(--feld); border-radius: 9px; padding: 2px; flex: none; }
+.segmente label { position: relative; }
+.segmente input { position: absolute; opacity: 0; inset: 0; margin: 0; }
+.segmente span { display: block; padding: 6px 13px; border-radius: 7px; font-size: 0.86rem; font-weight: 500; white-space: nowrap; }
+.segmente input:checked + span { background: var(--zelle); box-shadow: 0 1px 4px rgba(0, 0, 0, 0.14); font-weight: 600; }
+.segmente input:focus-visible + span { outline: 3px solid var(--akzent); }
+@media (prefers-color-scheme: dark) { .segmente input:checked + span { background: #636366; } }
+.zelle.gestapelt { flex-direction: column; align-items: stretch; gap: 8px; }
+.zelle.gestapelt .segmente span { text-align: center; padding: 6px 4px; }
+.zelle.gestapelt .segmente label { flex: 1; }
+
+/* Bestätigungsdialog (Aktionsblatt von unten) */
+.aktionsblatt { width: 100%; max-width: 640px; padding: 0 8px calc(var(--unten) + 8px); animation: hochfahren 0.28s cubic-bezier(0.2, 0.85, 0.25, 1); }
+.aktionsblatt .karte { background: var(--zelle); border-radius: 14px; overflow: hidden; }
+.aktionsblatt .karte + .karte { margin-top: 8px; }
+.aktionsblatt .frage { padding: 14px 16px; text-align: center; font-size: 0.8rem; color: var(--text-2); }
+.aktionsblatt .frage b { display: block; color: var(--text-2); font-weight: 600; margin-bottom: 2px; }
+.aktionsblatt button { width: 100%; min-height: 57px; font-size: 1.18rem; color: var(--akzent); border-top: 0.5px solid var(--trenner); }
+.aktionsblatt button:active { background: var(--zelle-gedrueckt); }
+.aktionsblatt button.gefahr { color: var(--schlecht); }
+.aktionsblatt .karte.abbrechen button { border-top: 0; font-weight: 600; }
+
+/* Kurzer Hinweis unten (z. B. "Exportiert") */
+.hinweis {
+  position: fixed; left: 50%; bottom: calc(var(--tab-hoehe) + var(--unten) + 14px); transform: translateX(-50%); z-index: 60;
+  background: rgba(40, 40, 44, 0.94); color: #fff; padding: 10px 16px; border-radius: 14px; font-size: 0.9rem;
+  max-width: calc(100% - 32px); text-align: center; animation: einblenden 0.2s ease;
+}
+
+/* ---------- "Bewegung reduzieren" respektieren ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ---------- Große Schrift / schmale Bildschirme: umbrechen statt abschneiden ---------- */
+.zelle { flex-wrap: wrap; }
+.zelle .titel { flex: 1 1 8ch; }
+.zelle > .segmente { max-width: 100%; margin-left: auto; }
+.zelle > .auswahl { flex: 0 1 auto; min-width: 0; max-width: 62%; }
+.zelle.gestapelt > .segmente { margin-left: 0; width: 100%; }
+.zelle.gestapelt .segmente label { flex: 1 1 0; }
+.segmente { flex: 0 1 auto; min-width: 0; }
+.segmente label { flex: 1 1 auto; min-width: 0; }
+.segmente span { white-space: normal; text-align: center; overflow-wrap: break-word; padding-left: 8px; padding-right: 8px; }
+.auswahl { text-overflow: ellipsis; }
+.sheet-kopf { grid-template-columns: auto 1fr auto; gap: 6px; }
+.sheet-kopf button { white-space: nowrap; }
+.fach-name, .pruefung .name { overflow-wrap: break-word; hyphens: auto; -webkit-hyphens: auto; }
+.pruefung .rechnung { flex-wrap: wrap; }
+.pruefung .rechnung .rechts { margin-left: auto; text-align: right; }

@@ -1,0 +1,83 @@
+# Automatische Tests: laufen bei jedem Hochladen von Änderungen auf GitHub.
+# Hier wird nichts veröffentlicht – es wird nur geprüft, ob alles rechnet und baut.
+name: Tests
+
+on:
+  push:
+  workflow_dispatch:
+
+# Läuft noch ein älterer Testlauf für denselben Zweig, wird er abgebrochen (spart Freiminuten).
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  web:
+    name: Web-App (JavaScript)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test web/tests/*.test.mjs
+
+  swift:
+    name: Rechenlogik (Swift)
+    runs-on: ubuntu-latest
+    container: swift:6.0
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift test
+        working-directory: ios/AbiCore
+
+  ios:
+    name: iPhone-App (Probe-Build und Tests)
+    # Pausiert: läuft nur, wenn der Testlauf von Hand gestartet wird (spart Mac-Minuten).
+    if: github.event_name == 'workflow_dispatch'
+    timeout-minutes: 30
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Xcode-Version anzeigen
+        run: xcodebuild -version
+      - name: App für den Simulator bauen (ohne Signatur)
+        working-directory: ios
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project AbiRechner.xcodeproj \
+            -scheme AbiRechner \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO | tail -n 60
+      # Dauert etwa 5 Minuten. Läuft deshalb nur, wenn der Testlauf von Hand gestartet wird
+      # (Actions → Tests → Run workflow). Die Bilder liegen danach unter "Artifacts".
+      - name: App im Simulator starten und prüfen, dass sie nicht abstürzt
+        if: github.event_name == 'workflow_dispatch'
+        working-directory: ios
+        timeout-minutes: 8
+        continue-on-error: true
+        run: |
+          set -x
+          GERAET=$(xcrun simctl list devices available | grep -m1 -oE 'iPhone [^(]+ \([0-9A-F-]{36}\)' | grep -oE '[0-9A-F-]{36}')
+          echo "Simulator: $GERAET"
+          xcrun simctl boot "$GERAET"
+          xcrun simctl install "$GERAET" build/Build/Products/Debug-iphonesimulator/AbiRechner.app
+          xcrun simctl launch "$GERAET" de.abirechner.AbiRechner2027
+          sleep 12
+          mkdir -p bilder
+          xcrun simctl io "$GERAET" screenshot bilder/start-hell.png
+          xcrun simctl ui "$GERAET" appearance dark
+          sleep 3
+          xcrun simctl io "$GERAET" screenshot bilder/start-dunkel.png
+          # Läuft die App noch? (Sonst ist sie abgestürzt.)
+          xcrun simctl spawn "$GERAET" launchctl list | grep AbiRechner2027
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'workflow_dispatch'
+        with:
+          name: simulator-bilder
+          path: ios/bilder
+      - name: Rechenlogik auf dem Mac testen
+        working-directory: ios/AbiCore
+        run: swift test

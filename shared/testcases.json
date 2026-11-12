@@ -1,0 +1,7353 @@
+{
+ "beschreibung": "Gemeinsame Testfälle für die Swift- und die JavaScript-Rechenlogik. Beide Testläufe lesen diese Datei.",
+ "schemaVersion": 1,
+ "notenFaelle": [
+  {
+   "punkte": 900,
+   "bestanden": true,
+   "noteZehntel": 10
+  },
+  {
+   "punkte": 823,
+   "bestanden": true,
+   "noteZehntel": 10
+  },
+  {
+   "punkte": 822,
+   "bestanden": true,
+   "noteZehntel": 11
+  },
+  {
+   "punkte": 805,
+   "bestanden": true,
+   "noteZehntel": 11
+  },
+  {
+   "punkte": 804,
+   "bestanden": true,
+   "noteZehntel": 12
+  },
+  {
+   "punkte": 660,
+   "bestanden": true,
+   "noteZehntel": 20
+  },
+  {
+   "punkte": 301,
+   "bestanden": true,
+   "noteZehntel": 39
+  },
+  {
+   "punkte": 300,
+   "bestanden": true,
+   "noteZehntel": 40
+  },
+  {
+   "punkte": 299,
+   "bestanden": false,
+   "noteZehntel": null
+  },
+  {
+   "punkte": 0,
+   "bestanden": false,
+   "noteZehntel": null
+  }
+ ],
+ "mindestpunkte": [
+  {
+   "zielZehntel": 10,
+   "eMin": 823
+  },
+  {
+   "zielZehntel": 13,
+   "eMin": 769
+  },
+  {
+   "zielZehntel": 20,
+   "eMin": 643
+  },
+  {
+   "zielZehntel": 30,
+   "eMin": 463
+  }
+ ],
+ "rundenFaelle": [
+  {
+   "wert": 12.5,
+   "erwartet": 13
+  },
+  {
+   "wert": 11.5,
+   "erwartet": 12
+  },
+  {
+   "wert": 12.49,
+   "erwartet": 12
+  },
+  {
+   "wert": 0.5,
+   "erwartet": 1
+  },
+  {
+   "wert": 0,
+   "erwartet": 0
+  },
+  {
+   "wert": 12.95,
+   "erwartet": 13
+  }
+ ],
+ "blockIFaelle": [
+  {
+   "summeGK": 328,
+   "summeLK": 82,
+   "blockI": 410
+  },
+  {
+   "summeGK": 320,
+   "summeLK": 80,
+   "blockI": 400
+  },
+  {
+   "summeGK": 480,
+   "summeLK": 120,
+   "blockI": 600
+  },
+  {
+   "summeGK": 340,
+   "summeLK": 80,
+   "blockI": 417
+  },
+  {
+   "summeGK": 280,
+   "summeLK": 80,
+   "blockI": 367
+  },
+  {
+   "summeGK": 0,
+   "summeLK": 0,
+   "blockI": 0
+  }
+ ],
+ "zielFaelle": [
+  {
+   "blockI": 410,
+   "zielZehntel": 20,
+   "status": "erreichbar",
+   "schnittZehntel": 117
+  },
+  {
+   "blockI": 400,
+   "zielZehntel": 30,
+   "status": "erreichbar",
+   "schnittZehntel": 32
+  },
+  {
+   "blockI": 400,
+   "zielZehntel": 10,
+   "status": "nichtErreichbar",
+   "schnittZehntel": null
+  },
+  {
+   "blockI": 600,
+   "zielZehntel": 30,
+   "status": "sicher",
+   "schnittZehntel": null
+  },
+  {
+   "blockI": 523,
+   "zielZehntel": 10,
+   "status": "erreichbar",
+   "schnittZehntel": 150
+  },
+  {
+   "blockI": 522,
+   "zielZehntel": 10,
+   "status": "nichtErreichbar",
+   "schnittZehntel": null
+  },
+  {
+   "blockI": 769,
+   "zielZehntel": 13,
+   "status": "sicher",
+   "schnittZehntel": null
+  },
+  {
+   "blockI": 768,
+   "zielZehntel": 13,
+   "status": "erreichbar",
+   "schnittZehntel": 1
+  }
+ ],
+ "szenarien": [
+  {
+   "name": "beispieldaten",
+   "beschreibung": "Vollständiges Beispiel mit Profilfach, Zusatzkurs, abgewähltem Fach und Annahme",
+   "datenDatei": "beispieldaten.json",
+   "erwartet": {
+    "blockI": 410,
+    "blockII": 205,
+    "gesamt": 615,
+    "status": "ok",
+    "noteZehntel": 22,
+    "hochgerechnet": true,
+    "summeLK": 82,
+    "summeGK": 328,
+    "anzahlEingebracht": 40,
+    "anzahlLK": 8,
+    "bedingungen": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ],
+    "ziel": {
+     "status": "erreichbar",
+     "eMin": 643,
+     "benoetigtBlockII": 233,
+     "schnittZehntel": 117
+    },
+    "pruefungen": [
+     {
+      "wert": 11,
+      "istPrognose": true
+     },
+     {
+      "wert": 10,
+      "istPrognose": true
+     },
+     {
+      "wert": 9,
+      "istPrognose": true
+     },
+     {
+      "wert": 11,
+      "istPrognose": true
+     }
+    ],
+    "kurse": {
+     "Deutsch": {
+      "werte": [
+       10,
+       11,
+       11,
+       11
+      ],
+      "istPrognose": [
+       false,
+       false,
+       true,
+       true
+      ],
+      "eingebracht": [
+       true,
+       true,
+       true,
+       true
+      ]
+     },
+     "Spanisch": {
+      "werte": [
+       7,
+       6,
+       7,
+       7
+      ],
+      "istPrognose": [
+       false,
+       false,
+       true,
+       true
+      ],
+      "eingebracht": [
+       true,
+       true,
+       true,
+       true
+      ]
+     },
+     "Kunst": {
+      "werte": [
+       12,
+       13,
+       null,
+       null
+      ],
+      "belegt": [
+       true,
+       true,
+       false,
+       false
+      ],
+      "eingebracht": [
+       true,
+       true,
+       false,
+       false
+      ]
+     },
+     "Erdkunde": {
+      "werte": [
+       9,
+       10,
+       10,
+       10
+      ],
+      "istPrognose": [
+       false,
+       false,
+       true,
+       true
+      ]
+     },
+     "Sozialwissenschaften": {
+      "werte": [
+       null,
+       null,
+       10,
+       10
+      ],
+      "belegt": [
+       false,
+       false,
+       true,
+       true
+      ],
+      "istPrognose": [
+       false,
+       false,
+       true,
+       true
+      ],
+      "eingebracht": [
+       false,
+       false,
+       true,
+       true
+      ]
+     }
+    }
+   }
+  },
+  {
+   "name": "basis-alle-10",
+   "beschreibung": "Alle Noten und Prüfungen 10 Punkte, nichts hochgerechnet",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "blockI": 400,
+    "blockII": 200,
+    "gesamt": 600,
+    "status": "ok",
+    "noteZehntel": 23,
+    "hochgerechnet": false,
+    "summeLK": 80,
+    "summeGK": 320,
+    "anzahlEingebracht": 40,
+    "anzahlLK": 8,
+    "bedingungen": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "name": "alle-15",
+   "beschreibung": "Bestwerte: 900 Punkte, Ziel 1,0",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 10
+    },
+    "pruefungen": [
+     15,
+     15,
+     15,
+     15
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "blockI": 600,
+    "blockII": 300,
+    "gesamt": 900,
+    "status": "ok",
+    "noteZehntel": 10,
+    "ziel": {
+     "status": "erreichbar",
+     "eMin": 823,
+     "benoetigtBlockII": 223,
+     "schnittZehntel": 112
+    }
+   }
+  },
+  {
+   "name": "profilfach-wird-eingebracht",
+   "beschreibung": "Profilfach mit 5 Punkten wird eingebracht, obwohl bessere GK-Kurse übrig wären",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "p",
+      "name": "P",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": true,
+      "istProfilfach": true,
+      "noten": [
+       5,
+       5,
+       5,
+       5
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f7",
+      "name": "F7",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "blockI": 400,
+    "summeGK": 320,
+    "anzahlEingebracht": 40,
+    "status": "ok",
+    "kurse": {
+     "P": {
+      "eingebracht": [
+       true,
+       true,
+       true,
+       true
+      ]
+     },
+     "F7": {
+      "eingebracht": [
+       true,
+       true,
+       true,
+       true
+      ]
+     }
+    }
+   }
+  },
+  {
+   "name": "ohne-profilfach-fallen-schwache-kurse-weg",
+   "beschreibung": "Gegenprobe: ohne Profilfach-Kennzeichen werden die 5-Punkte-Kurse gestrichen",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "p",
+      "name": "P",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       5,
+       5,
+       5,
+       5
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f7",
+      "name": "F7",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "blockI": 417,
+    "summeGK": 340,
+    "anzahlEingebracht": 40,
+    "kurse": {
+     "P": {
+      "eingebracht": [
+       false,
+       false,
+       false,
+       false
+      ]
+     }
+    }
+   }
+  },
+  {
+   "name": "pflichtfach-wird-eingebracht",
+   "beschreibung": "Fach mit \"pflicht\" wird immer eingebracht",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "p",
+      "name": "P",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": true,
+      "istProfilfach": false,
+      "noten": [
+       5,
+       5,
+       5,
+       5
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f7",
+      "name": "F7",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "blockI": 400,
+    "kurse": {
+     "P": {
+      "eingebracht": [
+       true,
+       true,
+       true,
+       true
+      ]
+     }
+    }
+   }
+  },
+  {
+   "name": "abifach-3-wird-eingebracht",
+   "beschreibung": "Kurse der Abifächer 3 und 4 werden immer eingebracht",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       5,
+       5,
+       5,
+       5
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f7",
+      "name": "F7",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "blockI": 400,
+    "summeGK": 320,
+    "kurse": {
+     "D": {
+      "eingebracht": [
+       true,
+       true,
+       true,
+       true
+      ]
+     }
+    }
+   }
+  },
+  {
+   "name": "bedingung-1-zu-wenige-kurse",
+   "beschreibung": "Nur 28 GK-Kurse belegt",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "blockI": 367,
+    "anzahlEingebracht": 36,
+    "anzahlLK": 8,
+    "status": "bedingungen",
+    "noteZehntel": null,
+    "bedingungen": [
+     false,
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "name": "bedingung-2-block-1-zu-niedrig",
+   "beschreibung": "Alle Kurse 4 Punkte, Prüfungen hochgerechnet auf 4",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     null,
+     null,
+     null,
+     null
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       4,
+       4,
+       4,
+       4
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       4,
+       4,
+       4,
+       4
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       4,
+       4,
+       4,
+       4
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       4,
+       4,
+       4,
+       4
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       4,
+       4,
+       4,
+       4
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       4,
+       4,
+       4,
+       4
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       4,
+       4,
+       4,
+       4
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       4,
+       4,
+       4,
+       4
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       4,
+       4,
+       4,
+       4
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       4,
+       4,
+       4,
+       4
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "blockI": 160,
+    "blockII": 80,
+    "gesamt": 240,
+    "status": "bedingungen",
+    "bedingungen": [
+     true,
+     false,
+     false,
+     true,
+     false,
+     false
+    ]
+   }
+  },
+  {
+   "name": "bedingung-3-neun-defizite",
+   "beschreibung": "9 eingebrachte Kurse unter 5 Punkten",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       4,
+       4,
+       4,
+       4
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       4,
+       4,
+       4,
+       4
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       4,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "status": "bedingungen",
+    "bedingungen": [
+     true,
+     true,
+     false,
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "name": "bedingung-3-acht-defizite-ok",
+   "beschreibung": "Genau 8 Defizite sind erlaubt",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       4,
+       4,
+       4,
+       4
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       4,
+       4,
+       4,
+       4
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "blockI": 360,
+    "status": "ok",
+    "bedingungen": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "name": "bedingung-3-vier-lk-defizite",
+   "beschreibung": "4 LK-Kurse unter 5 Punkten",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     null,
+     null,
+     null,
+     null
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       4,
+       4,
+       4,
+       4
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "blockI": 360,
+    "blockII": 170,
+    "status": "bedingungen",
+    "bedingungen": [
+     true,
+     true,
+     false,
+     true,
+     true,
+     true
+    ],
+    "pruefungen": [
+     {
+      "wert": 4,
+      "istPrognose": true
+     },
+     {
+      "wert": 10
+     },
+     {
+      "wert": 10
+     },
+     {
+      "wert": 10
+     }
+    ]
+   }
+  },
+  {
+   "name": "bedingung-3-drei-lk-defizite-ok",
+   "beschreibung": "Genau 3 LK-Defizite sind erlaubt",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       4,
+       4,
+       4,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "bedingungen": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ],
+    "status": "ok"
+   }
+  },
+  {
+   "name": "bedingung-4-null-punkte",
+   "beschreibung": "Ein eingebrachter Kurs mit 0 Punkten",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       0,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "status": "bedingungen",
+    "bedingungen": [
+     true,
+     true,
+     true,
+     false,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "name": "bedingung-4-null-punkte-nicht-eingebracht",
+   "beschreibung": "0-Punkte-Kurs wird gestrichen, weil genug andere Kurse da sind",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       0,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f7",
+      "name": "F7",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "blockI": 400,
+    "status": "ok",
+    "bedingungen": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ],
+    "kurse": {
+     "F1": {
+      "eingebracht": [
+       false,
+       true,
+       true,
+       true
+      ]
+     }
+    }
+   }
+  },
+  {
+   "name": "bedingung-5-block-2-zu-niedrig",
+   "beschreibung": "Prüfungen 5,5,4,4 = 90 Punkte",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     5,
+     5,
+     4,
+     4
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "blockII": 90,
+    "status": "bedingungen",
+    "bedingungen": [
+     true,
+     true,
+     true,
+     true,
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "name": "bedingung-6-kein-lk-bestanden",
+   "beschreibung": "Zwei Prüfungen >= 5, aber kein LK dabei",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     4,
+     4,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "blockII": 140,
+    "status": "bedingungen",
+    "bedingungen": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     false
+    ]
+   }
+  },
+  {
+   "name": "bedingung-6-nur-eine-pruefung",
+   "beschreibung": "Nur eine Prüfung mit mindestens 5 Punkten",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     4,
+     4,
+     4
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "blockII": 110,
+    "status": "bedingungen",
+    "bedingungen": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     false
+    ]
+   }
+  },
+  {
+   "name": "bedingung-6-knapp-erfuellt",
+   "beschreibung": "Zwei Prüfungen >= 5, eine davon LK",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     4,
+     5,
+     4
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "blockII": 115,
+    "gesamt": 515,
+    "status": "ok",
+    "noteZehntel": 28,
+    "bedingungen": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "name": "ziel-nicht-erreichbar",
+   "beschreibung": "Block I 400, Ziel 1,0 braucht 423 Punkte in Block II",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 10
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "ziel": {
+     "status": "nichtErreichbar",
+     "eMin": 823,
+     "benoetigtBlockII": 423
+    }
+   }
+  },
+  {
+   "name": "ziel-aufrunden",
+   "beschreibung": "Block I 400, Ziel 3,0: 63 Punkte = Ø 3,15 -> 3,2",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 30
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "ziel": {
+     "status": "erreichbar",
+     "eMin": 463,
+     "benoetigtBlockII": 63,
+     "schnittZehntel": 32
+    }
+   }
+  },
+  {
+   "name": "ziel-schon-sicher",
+   "beschreibung": "Block I 600 reicht allein für 3,0",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 30
+    },
+    "pruefungen": [
+     15,
+     15,
+     15,
+     15
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "ziel": {
+     "status": "sicher",
+     "eMin": 463,
+     "benoetigtBlockII": -137
+    }
+   }
+  },
+  {
+   "name": "prognose-quartalsnote",
+   "beschreibung": "Quartalsnote gilt für Q2.1 und zählt im Fachschnitt für Q2.2",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       null,
+       null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": 13
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "hochgerechnet": true,
+    "kurse": {
+     "F1": {
+      "werte": [
+       10,
+       10,
+       13,
+       11
+      ],
+      "istPrognose": [
+       false,
+       false,
+       true,
+       true
+      ]
+     }
+    }
+   }
+  },
+  {
+   "name": "prognose-quartal-vor-annahme",
+   "beschreibung": "Quartalsnote hat für Q2.1 Vorrang, Annahme gilt für Q2.2",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       null,
+       null
+      ],
+      "annahmeQ2": 8,
+      "quartalsnote": 13
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "kurse": {
+     "F1": {
+      "werte": [
+       10,
+       10,
+       13,
+       8
+      ]
+     }
+    }
+   }
+  },
+  {
+   "name": "prognose-annahme",
+   "beschreibung": "Annahme Q2 füllt beide offenen Q2-Halbjahre",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       null,
+       null
+      ],
+      "annahmeQ2": 14,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "kurse": {
+     "F1": {
+      "werte": [
+       10,
+       10,
+       14,
+       14
+      ]
+     }
+    }
+   }
+  },
+  {
+   "name": "prognose-annahme-nur-q2",
+   "beschreibung": "Die Annahme gilt nicht für offene Q1-Halbjahre (dort Fachschnitt)",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       null,
+       10,
+       null,
+       12
+      ],
+      "annahmeQ2": 3,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "kurse": {
+     "F1": {
+      "werte": [
+       11,
+       10,
+       3,
+       12
+      ],
+      "istPrognose": [
+       true,
+       false,
+       true,
+       false
+      ]
+     }
+    }
+   }
+  },
+  {
+   "name": "prognose-kaufmaennisch-runden",
+   "beschreibung": "12,5 wird auf 13 gerundet, 11,5 auf 12",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       12,
+       13,
+       null,
+       null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       12,
+       11,
+       null,
+       null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "kurse": {
+     "F1": {
+      "werte": [
+       12,
+       13,
+       13,
+       13
+      ]
+     },
+     "F2": {
+      "werte": [
+       12,
+       11,
+       12,
+       12
+      ]
+     }
+    }
+   }
+  },
+  {
+   "name": "prognose-fach-ohne-noten",
+   "beschreibung": "Fach ohne Noten bekommt den Schnitt aller echten Noten aller Fächer (hier 400 / 36 = 11,1 -> 11)",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       null,
+       null,
+       null,
+       null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       5,
+       5,
+       5,
+       5
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       15,
+       15,
+       15,
+       15
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "kurse": {
+     "F1": {
+      "werte": [
+       11,
+       11,
+       11,
+       11
+      ],
+      "istPrognose": [
+       true,
+       true,
+       true,
+       true
+      ]
+     }
+    }
+   }
+  },
+  {
+   "name": "prognose-gar-keine-noten",
+   "beschreibung": "Ohne jede Note gilt der Fallback 10",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     null,
+     null,
+     null,
+     null
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       null,
+       null,
+       null,
+       null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       null,
+       null,
+       null,
+       null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       null,
+       null,
+       null,
+       null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       null,
+       null,
+       null,
+       null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       null,
+       null,
+       null,
+       null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       null,
+       null,
+       null,
+       null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       null,
+       null,
+       null,
+       null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       null,
+       null,
+       null,
+       null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       null,
+       null,
+       null,
+       null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       null,
+       null,
+       null,
+       null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "blockI": 400,
+    "blockII": 200,
+    "gesamt": 600,
+    "noteZehntel": 23,
+    "hochgerechnet": true,
+    "status": "ok",
+    "kurse": {
+     "M": {
+      "werte": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "istPrognose": [
+       true,
+       true,
+       true,
+       true
+      ]
+     }
+    }
+   }
+  },
+  {
+   "name": "prognose-quartal-nach-halbjahresnote",
+   "beschreibung": "Sobald die Q2.1-Note da ist, zählt die Quartalsnote nicht mehr mit",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     10,
+     10,
+     10,
+     10
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": 15
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "kurse": {
+     "F1": {
+      "werte": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "istPrognose": [
+       false,
+       false,
+       false,
+       true
+      ]
+     }
+    }
+   }
+  },
+  {
+   "name": "prognose-pruefung",
+   "beschreibung": "Prüfung ohne Eingabe: Annahme, sonst Fachschnitt inkl. Quartalsnote",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     null,
+     null,
+     7,
+     null
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       null,
+       null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": 13
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       null,
+       null
+      ],
+      "annahmeQ2": 14,
+      "quartalsnote": 5
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "pruefungen": [
+     {
+      "wert": 11,
+      "istPrognose": true
+     },
+     {
+      "wert": 14,
+      "istPrognose": true
+     },
+     {
+      "wert": 7,
+      "istPrognose": false
+     },
+     {
+      "wert": 10,
+      "istPrognose": true
+     }
+    ],
+    "blockII": 210,
+    "hochgerechnet": true
+   }
+  },
+  {
+   "name": "pruefung-ohne-fach",
+   "beschreibung": "Abifach 4 ist keinem Fach zugeordnet: Prognose aus allen echten Noten",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     12,
+     12,
+     12,
+     null
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     }
+    ]
+   },
+   "erwartet": {
+    "pruefungen": [
+     {
+      "wert": 12
+     },
+     {
+      "wert": 12
+     },
+     {
+      "wert": 12
+     },
+     {
+      "wert": 10,
+      "istPrognose": true
+     }
+    ],
+    "blockII": 230
+   }
+  },
+  {
+   "name": "leer",
+   "beschreibung": "Keine Fächer: kein Absturz, Bedingungen nicht erfüllt",
+   "daten": {
+    "format": "abi-rechner-nrw",
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 13
+    },
+    "pruefungen": [
+     null,
+     null,
+     null,
+     null
+    ],
+    "faecher": []
+   },
+   "erwartet": {
+    "blockI": 0,
+    "blockII": 200,
+    "gesamt": 200,
+    "status": "bedingungen",
+    "anzahlEingebracht": 0,
+    "anzahlLK": 0,
+    "bedingungen": [
+     false,
+     false,
+     true,
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "name": "ungueltige-eingaben",
+   "beschreibung": "Werte außerhalb 0-15 werden begrenzt, Unsinn wird wie \"leer\" behandelt",
+   "daten": {
+    "schemaVersion": 1,
+    "einstellungen": {
+     "zielschnittZehntel": 99
+    },
+    "pruefungen": [
+     99,
+     -3,
+     "abc",
+     10.4
+    ],
+    "faecher": [
+     {
+      "id": "m",
+      "name": "M",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "g",
+      "name": "G",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "d",
+      "name": "D",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "e",
+      "name": "E",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f1",
+      "name": "F1",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f2",
+      "name": "F2",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f3",
+      "name": "F3",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f4",
+      "name": "F4",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f5",
+      "name": "F5",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "id": "f6",
+      "name": "F6",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+       10,
+       10,
+       10,
+       10
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+     },
+     {
+      "name": "Kaputt",
+      "noten": [
+       99,
+       -5,
+       "x"
+      ],
+      "abifach": 9,
+      "annahmeQ2": 77
+     }
+    ]
+   },
+   "erwartet": {
+    "blockI": 413,
+    "blockII": 175,
+    "gesamt": 588,
+    "status": "ok",
+    "noteZehntel": 24,
+    "hochgerechnet": true,
+    "bedingungen": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ],
+    "pruefungen": [
+     {
+      "wert": 15,
+      "istPrognose": false
+     },
+     {
+      "wert": 0,
+      "istPrognose": false
+     },
+     {
+      "wert": 10,
+      "istPrognose": true
+     },
+     {
+      "wert": 10,
+      "istPrognose": false
+     }
+    ],
+    "kurse": {
+     "Kaputt": {
+      "werte": [
+       15,
+       0,
+       15,
+       15
+      ],
+      "istPrognose": [
+       false,
+       false,
+       true,
+       true
+      ],
+      "eingebracht": [
+       true,
+       false,
+       true,
+       true
+      ]
+     }
+    },
+    "ziel": {
+     "zielZehntel": 30
+    }
+   }
+  }
+ ]
+}

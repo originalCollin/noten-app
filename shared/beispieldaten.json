@@ -1,0 +1,213 @@
+{
+  "format": "abi-rechner-nrw",
+  "schemaVersion": 1,
+  "einstellungen": {
+    "zielschnittZehntel": 20
+  },
+  "pruefungen": [
+    null,
+    null,
+    null,
+    null
+  ],
+  "faecher": [
+    {
+      "id": "deutsch",
+      "name": "Deutsch",
+      "istLK": true,
+      "abifach": 1,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+        10,
+        11,
+        null,
+        null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+    },
+    {
+      "id": "englisch",
+      "name": "Englisch",
+      "istLK": true,
+      "abifach": 2,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+        9,
+        10,
+        null,
+        null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+    },
+    {
+      "id": "mathematik",
+      "name": "Mathematik",
+      "istLK": false,
+      "abifach": 3,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+        8,
+        9,
+        null,
+        null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+    },
+    {
+      "id": "geschichte",
+      "name": "Geschichte",
+      "istLK": false,
+      "abifach": 4,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+        11,
+        11,
+        null,
+        null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+    },
+    {
+      "id": "biologie",
+      "name": "Biologie",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+        10,
+        12,
+        null,
+        null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+    },
+    {
+      "id": "spanisch",
+      "name": "Spanisch",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": true,
+      "istProfilfach": true,
+      "noten": [
+        7,
+        6,
+        null,
+        null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+    },
+    {
+      "id": "kunst",
+      "name": "Kunst",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": true,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+        12,
+        13,
+        null,
+        null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+    },
+    {
+      "id": "sport",
+      "name": "Sport",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+        13,
+        12,
+        null,
+        null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+    },
+    {
+      "id": "erdkunde",
+      "name": "Erdkunde",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+        9,
+        10,
+        null,
+        null
+      ],
+      "annahmeQ2": 10,
+      "quartalsnote": null
+    },
+    {
+      "id": "religion",
+      "name": "Religion",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": false,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+        11,
+        10,
+        null,
+        null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+    },
+    {
+      "id": "sozialwissenschaften",
+      "name": "Sozialwissenschaften",
+      "istLK": false,
+      "abifach": 0,
+      "istZusatzkurs": true,
+      "nurQ1": false,
+      "pflicht": false,
+      "istProfilfach": false,
+      "noten": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "annahmeQ2": null,
+      "quartalsnote": null
+    }
+  ]
+}

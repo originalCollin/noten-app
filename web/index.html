@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Abi-Rechner 2027</title>
+  <!-- viewport-fit=cover: Die App darf bis unter Notch und Home-Indikator reichen (Safe Areas regelt das CSS). -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Abitur-Schnitt nach APO-GOSt NRW berechnen und hochrechnen.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <!-- Als App auf dem iPhone-Home-Bildschirm: Vollbild ohne Safari-Leisten -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Abi-Rechner">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Schmale Leiste oben: zeigt den Titel, sobald die große Überschrift weggescrollt ist -->
+    <div class="leiste" id="leiste" aria-hidden="true"><span id="leiste-titel"></span></div>
+    <!-- Hier zeichnet app.js den jeweils aktiven Bereich -->
+    <main id="ansicht" tabindex="-1"></main>
+    <!-- Tab-Leiste unten -->
+    <nav class="tabbar" id="tabbar" aria-label="Bereiche"></nav>
+    <!-- Ebene für Sheets und Dialoge -->
+    <div id="ebene"></div>
+    <!-- Ansagen für VoiceOver, wenn sich der Schnitt ändert -->
+    <div class="nur-vorlesen" id="ansage" aria-live="polite"></div>
+  </div>
+  <noscript><p style="padding:2rem">Der Abi-Rechner braucht JavaScript.</p></noscript>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

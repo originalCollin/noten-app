@@ -1,0 +1,215 @@
+{
+  "einstellungen": {
+    "zielschnittZehntel": 20
+  },
+  "exportiertAm": "2026-11-12T08:00:00.000Z",
+  "faecher": [
+    {
+      "abifach": 1,
+      "annahmeQ2": null,
+      "id": "deutsch",
+      "istLK": true,
+      "istProfilfach": false,
+      "istZusatzkurs": false,
+      "name": "Deutsch",
+      "noten": [
+        10,
+        11,
+        14,
+        null
+      ],
+      "nurQ1": false,
+      "pflicht": false,
+      "quartalsnote": null
+    },
+    {
+      "abifach": 2,
+      "annahmeQ2": null,
+      "id": "englisch",
+      "istLK": true,
+      "istProfilfach": false,
+      "istZusatzkurs": false,
+      "name": "Englisch",
+      "noten": [
+        9,
+        10,
+        null,
+        null
+      ],
+      "nurQ1": false,
+      "pflicht": false,
+      "quartalsnote": 11
+    },
+    {
+      "abifach": 3,
+      "annahmeQ2": null,
+      "id": "mathematik",
+      "istLK": false,
+      "istProfilfach": false,
+      "istZusatzkurs": false,
+      "name": "Mathematik",
+      "noten": [
+        8,
+        9,
+        null,
+        null
+      ],
+      "nurQ1": false,
+      "pflicht": false,
+      "quartalsnote": null
+    },
+    {
+      "abifach": 4,
+      "annahmeQ2": null,
+      "id": "geschichte",
+      "istLK": false,
+      "istProfilfach": false,
+      "istZusatzkurs": false,
+      "name": "Geschichte",
+      "noten": [
+        11,
+        11,
+        null,
+        null
+      ],
+      "nurQ1": false,
+      "pflicht": false,
+      "quartalsnote": null
+    },
+    {
+      "abifach": 0,
+      "annahmeQ2": null,
+      "id": "biologie",
+      "istLK": false,
+      "istProfilfach": false,
+      "istZusatzkurs": false,
+      "name": "Biologie",
+      "noten": [
+        10,
+        12,
+        null,
+        null
+      ],
+      "nurQ1": false,
+      "pflicht": false,
+      "quartalsnote": null
+    },
+    {
+      "abifach": 0,
+      "annahmeQ2": null,
+      "id": "spanisch",
+      "istLK": false,
+      "istProfilfach": true,
+      "istZusatzkurs": false,
+      "name": "Spanisch",
+      "noten": [
+        7,
+        6,
+        null,
+        null
+      ],
+      "nurQ1": false,
+      "pflicht": true,
+      "quartalsnote": null
+    },
+    {
+      "abifach": 0,
+      "annahmeQ2": null,
+      "id": "kunst",
+      "istLK": false,
+      "istProfilfach": false,
+      "istZusatzkurs": false,
+      "name": "Kunst",
+      "noten": [
+        12,
+        13,
+        null,
+        null
+      ],
+      "nurQ1": true,
+      "pflicht": false,
+      "quartalsnote": null
+    },
+    {
+      "abifach": 0,
+      "annahmeQ2": null,
+      "id": "sport",
+      "istLK": false,
+      "istProfilfach": false,
+      "istZusatzkurs": false,
+      "name": "Sport",
+      "noten": [
+        13,
+        12,
+        null,
+        null
+      ],
+      "nurQ1": false,
+      "pflicht": false,
+      "quartalsnote": null
+    },
+    {
+      "abifach": 0,
+      "annahmeQ2": 10,
+      "id": "erdkunde",
+      "istLK": false,
+      "istProfilfach": false,
+      "istZusatzkurs": false,
+      "name": "Erdkunde",
+      "noten": [
+        9,
+        10,
+        null,
+        null
+      ],
+      "nurQ1": false,
+      "pflicht": false,
+      "quartalsnote": null
+    },
+    {
+      "abifach": 0,
+      "annahmeQ2": null,
+      "id": "religion",
+      "istLK": false,
+      "istProfilfach": false,
+      "istZusatzkurs": false,
+      "name": "Religion",
+      "noten": [
+        11,
+        10,
+        null,
+        null
+      ],
+      "nurQ1": false,
+      "pflicht": false,
+      "quartalsnote": null
+    },
+    {
+      "abifach": 0,
+      "annahmeQ2": null,
+      "id": "sozialwissenschaften",
+      "istLK": false,
+      "istProfilfach": false,
+      "istZusatzkurs": true,
+      "name": "Sozialwissenschaften",
+      "noten": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "nurQ1": false,
+      "pflicht": false,
+      "quartalsnote": null
+    }
+  ],
+  "format": "abi-rechner-nrw",
+  "pruefungen": [
+    14,
+    null,
+    11,
+    null
+  ],
+  "quelle": "ios",
+  "schemaVersion": 1
+}

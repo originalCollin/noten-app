@@ -3,7 +3,7 @@
 // Speicher geantwortet und im Hintergrund nach einer neueren Version geschaut.
 // Wichtig: Bei Änderungen an der App die VERSION erhöhen.
 
-const VERSION = 'abi-rechner-v3';
+const VERSION = 'abi-rechner-v4';
 const DATEIEN = [
   './',
   './index.html',

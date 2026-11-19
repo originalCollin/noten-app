@@ -485,3 +485,88 @@ html, body { height: 100%; height: 100dvh; }
   .aktionsblatt { max-width: 420px; padding-bottom: 0; }
   #app { max-width: 720px; }
 }
+
+/* ==========================================================================
+   Laptop-Ansicht (ab 1024 px Breite)
+   Seitenleiste statt Tab-Leiste, mehrspaltige Bereiche, Tastaturkürzel.
+   ========================================================================== */
+.seiten-kopf, .tab .kurz { display: none; }
+
+@media (min-width: 1024px) {
+  :root { --seite: 264px; }
+  #app { max-width: none; margin: 0; }
+  .leiste { display: none; }
+
+  /* Seitenleiste als schwebende Glasfläche links */
+  .tabbar {
+    left: 12px; top: 12px; bottom: 12px; right: auto;
+    transform: none;
+    width: calc(var(--seite) - 24px);
+    height: auto;
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 18px 12px;
+    border-radius: 26px;
+  }
+  .seiten-kopf { display: block; padding: 4px 10px 18px; margin-bottom: 8px; border-bottom: 0.5px solid var(--trenner); }
+  .seiten-titel { font-size: 0.8rem; font-weight: 600; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.04em; }
+  .seiten-note {
+    font-family: ui-rounded, "SF Pro Rounded", -apple-system, system-ui, sans-serif;
+    font-size: 2.6rem; font-weight: 700; line-height: 1.1; margin-top: 6px;
+  }
+  .seiten-unter { font-size: 0.8rem; color: var(--text-2); }
+  .tab {
+    flex: none; height: 44px; flex-direction: row; flex-wrap: nowrap; white-space: nowrap; justify-content: flex-start; gap: 12px;
+    padding: 0 12px; font-size: 0.95rem; font-weight: 500; color: var(--text); border-radius: 12px;
+  }
+  .tab svg { width: 22px; height: 22px; color: var(--akzent); }
+  .tab span { flex: 1; text-align: left; }
+  .tab .kurz { display: inline; font: inherit; font-size: 0.75rem; color: var(--text-3); font-variant-numeric: tabular-nums; }
+  .tab:hover { background: var(--grau-flaeche); }
+  .tab[aria-current="page"] { background: var(--akzent); color: #fff; }
+  .tab[aria-current="page"] svg, .tab[aria-current="page"] .kurz { color: rgba(255, 255, 255, 0.85); }
+  .tab:active { transform: none; }
+
+  /* Inhaltsbereich rechts, breit genutzt */
+  #ansicht {
+    margin-left: var(--seite);
+    padding: 28px 40px 48px 28px;
+    width: auto;
+  }
+  #ansicht > * { max-width: 1180px; }
+  .kopf { margin-bottom: 18px; }
+  .grosser-titel { font-size: 2.2rem; }
+  .symbol-knopf:hover, button.zelle:hover { filter: brightness(0.97); }
+  @media (prefers-color-scheme: dark) { button.zelle:hover { filter: brightness(1.15); } }
+  .hinweis { bottom: 24px; left: calc(50% + var(--seite) / 2); }
+
+  /* Übersicht als Dashboard: zwei Spalten */
+  #uebersicht-inhalt {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 22px 26px; align-items: start; max-width: 1180px;
+  }
+  #uebersicht-inhalt > * { margin-top: 0; }
+  #uebersicht-inhalt > .held { padding: 36px 20px; }
+  #uebersicht-inhalt > .held .note { font-size: 6.5rem; }
+  #uebersicht-inhalt > .held + .abschnitt { grid-row: span 1; }
+
+  /* Kurse als Tabelle: Name links, Halbjahre rechts in einer Zeile */
+  #ansicht[data-tab="kurse"] .fach-inhalt {
+    display: grid; grid-template-columns: minmax(240px, 1fr) minmax(360px, 1.4fr);
+    grid-template-rows: auto 1fr; align-items: center; column-gap: 24px; padding: 6px 0;
+  }
+  #ansicht[data-tab="kurse"] .fach-kopf { grid-column: 1; grid-row: 1; padding-bottom: 0; }
+  #ansicht[data-tab="kurse"] .marken { grid-column: 1; grid-row: 2; align-self: start; padding-top: 4px; }
+  #ansicht[data-tab="kurse"] .halbjahre { grid-column: 2; grid-row: 1 / span 2; padding: 6px 16px 6px 0; }
+  #ansicht[data-tab="kurse"] .fach-kopf:hover .fach-name { color: var(--akzent); }
+
+  /* Quartal: Fächer in zwei Spalten */
+  #ansicht[data-tab="quartal"] .gruppe:not(.leer) { display: grid; grid-template-columns: 1fr 1fr; column-gap: 0; }
+  #ansicht[data-tab="quartal"] .gruppe .zelle::before { left: 16px; right: 16px; }
+  #ansicht[data-tab="quartal"] .gruppe .zelle:nth-child(2)::before { content: none; }
+  #ansicht[data-tab="quartal"] .gruppe .zelle:nth-child(odd) { border-right: 0.5px solid var(--trenner); }
+
+  /* Prüfungen: Karten im 2×2-Raster, Tabelle darunter über die volle Breite */
+  #ansicht[data-tab="pruefungen"] { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 24px; align-content: start; }
+  #ansicht[data-tab="pruefungen"] > .kopf, #ansicht[data-tab="pruefungen"] > section { grid-column: 1 / -1; }
+  #ansicht[data-tab="pruefungen"] > * { margin-top: 0 !important; }
+  #ansicht[data-tab="pruefungen"] .pruefung { padding: 20px; }
+}

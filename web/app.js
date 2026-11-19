@@ -129,14 +129,23 @@ function zeigeHinweis(text) {
 
 function zeichneTabbar() {
   document.getElementById('tabbar').innerHTML = TABS.map(
-    (t) => `<button class="tab" data-tab="${t.id}" ${t.id === aktiverTab ? 'aria-current="page"' : ''}>${symbol(t.symbol)}<span>${t.titel}</span></button>`,
+    (t, i) => `<button class="tab" data-tab="${t.id}" ${t.id === aktiverTab ? 'aria-current="page"' : ''}>${symbol(t.symbol)}<span>${t.titel}</span><kbd class="kurz">${MAC ? '⌘' : 'Strg+'}${i + 1}</kbd></button>`,
   ).join('');
+  // Kopf der Seitenleiste (nur in der Laptop-Ansicht sichtbar)
+  const tabbar = document.getElementById('tabbar');
+  const e = ergebnis;
+  tabbar.insertAdjacentHTML('afterbegin', `<div class="seiten-kopf" aria-hidden="true">
+    <div class="seiten-titel">Abi-Rechner 2027</div>
+    <div class="seiten-note zahl">${e.status === 'ok' ? `Ø ${C.zehntelText(e.noteZehntel)}` : '–'}</div>
+    <div class="seiten-unter zahl">${e.gesamt} / 900 Punkte${e.hochgerechnet ? ' · hochgerechnet' : ''}</div>
+  </div>`);
 }
 
 /** Zeichnet den aktiven Bereich komplett neu. */
 function zeichne() {
   const tab = TABS.find((t) => t.id === aktiverTab);
   document.getElementById('leiste-titel').textContent = tab.titel;
+  ansicht.dataset.tab = aktiverTab;
   ansicht.innerHTML = { uebersicht: htmlUebersicht, kurse: htmlKurse, quartal: htmlQuartal, pruefungen: htmlPruefungen }[aktiverTab]();
   zeichneTabbar();
   frischeAuf();
@@ -145,6 +154,11 @@ function zeichne() {
 
 /** Frischt nur Zahlen und Markierungen auf – Eingabefelder bleiben stehen (die Tastatur bleibt offen). */
 function frischeAuf() {
+  const kopf = document.querySelector('.seiten-kopf');
+  if (kopf) {
+    kopf.querySelector('.seiten-note').textContent = ergebnis.status === 'ok' ? `Ø ${C.zehntelText(ergebnis.noteZehntel)}` : '–';
+    kopf.querySelector('.seiten-unter').textContent = `${ergebnis.gesamt} / 900 Punkte${ergebnis.hochgerechnet ? ' · hochgerechnet' : ''}`;
+  }
   if (aktiverTab === 'uebersicht') frischeUebersichtAuf();
   if (aktiverTab === 'kurse') frischeKurseAuf();
   if (aktiverTab === 'quartal') frischeQuartalAuf();
@@ -1013,6 +1027,21 @@ document.addEventListener('visibilitychange', () => { if (document.visibilitySta
 window.addEventListener('online', () => planeSync(0));
 window.addEventListener('focus', () => planeSync(0));
 setInterval(() => { if (document.visibilityState === 'visible') planeSync(0); }, 60000);
+
+// Tastaturkürzel für die Laptop-Ansicht: ⌘1–4 (Mac) bzw. Strg+1–4 wechseln den Bereich,
+// ⇧⌘N (bzw. Umschalt+Strg+N) legt ein neues Fach an.
+const MAC = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
+document.addEventListener('keydown', (ev) => {
+  if (!(ev.metaKey || ev.ctrlKey) || ev.altKey || ebene.children.length) return;
+  const nr = Number(ev.key);
+  if (nr >= 1 && nr <= TABS.length) {
+    ev.preventDefault();
+    document.querySelector(`[data-tab="${TABS[nr - 1].id}"]`)?.click();
+  } else if (ev.key.toLowerCase() === 'n' && ev.shiftKey) {
+    ev.preventDefault();
+    oeffneFachSheet(null);
+  }
+});
 
 function starte() {
   const geladen = lade();

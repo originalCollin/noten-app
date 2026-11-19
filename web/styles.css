@@ -381,3 +381,107 @@ button.zelle:active { background: var(--zelle-gedrueckt); }
 .fach-name, .pruefung .name { overflow-wrap: break-word; hyphens: auto; -webkit-hyphens: auto; }
 .pruefung .rechnung { flex-wrap: wrap; }
 .pruefung .rechnung .rechts { margin-left: auto; text-align: right; }
+
+/* ==========================================================================
+   Liquid Glass (Apple-Designsprache ab iOS 26)
+   Schwebende, gläserne Bedienelemente mit weichen Rändern und Lichtkante.
+   ========================================================================== */
+:root {
+  --radius: 22px;
+  --glas: rgba(255, 255, 255, 0.58);
+  --glas-kante: rgba(255, 255, 255, 0.75);
+  --glas-licht: rgba(255, 255, 255, 0.9);
+  --glas-schatten: 0 10px 34px rgba(0, 0, 0, 0.14), 0 2px 8px rgba(0, 0, 0, 0.06);
+  --tab-hoehe: 62px;
+  --tab-abstand: 12px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --glas: rgba(44, 44, 48, 0.55);
+    --glas-kante: rgba(255, 255, 255, 0.16);
+    --glas-licht: rgba(255, 255, 255, 0.22);
+    --glas-schatten: 0 10px 34px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Volle Fensterhöhe, auch mit Browser-Leisten (verhindert abgeschnittene Tab-Leiste). */
+html, body { height: 100%; height: 100dvh; }
+#app { height: 100%; height: 100dvh; }
+#ansicht { padding-bottom: calc(var(--tab-hoehe) + var(--tab-abstand) + var(--unten) + 36px); }
+
+/* Gemeinsamer Glas-Look */
+.tabbar, .leiste, .symbol-knopf, .hinweis {
+  background: var(--glas);
+  -webkit-backdrop-filter: blur(22px) saturate(190%);
+  backdrop-filter: blur(22px) saturate(190%);
+  box-shadow: inset 0 1px 0 var(--glas-licht), inset 0 0 0 0.5px var(--glas-kante), var(--glas-schatten);
+}
+
+/* Schwebende Tab-Leiste in Kapselform */
+.tabbar {
+  position: fixed;
+  left: 50%;
+  right: auto;
+  bottom: calc(var(--unten) + var(--tab-abstand));
+  transform: translateX(-50%);
+  width: min(calc(100% - 32px), 440px);
+  height: var(--tab-hoehe);
+  padding: 5px;
+  border: 0;
+  border-radius: 999px;
+  gap: 2px;
+  align-items: stretch;
+}
+.tab {
+  height: auto;
+  border-radius: 999px;
+  font-size: 10.5px;
+  gap: 1px;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.tab svg { width: 24px; height: 24px; }
+.tab[aria-current="page"] { background: var(--akzent-zart); font-weight: 600; }
+.tab:active { transform: scale(0.94); }
+
+/* Titelleiste oben: schwebende Glaskapsel statt Balken */
+.leiste {
+  inset: calc(var(--oben) + 8px) auto auto 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: 40px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 999px;
+}
+
+/* Runde Glas-Knöpfe (ⓘ, +) */
+.symbol-knopf { border-radius: 50%; }
+.symbol-knopf svg { width: 22px; height: 22px; }
+
+/* Karten und Eingabefelder weicher abrunden */
+.gruppe { border-radius: var(--radius); }
+.punkte { border-radius: 12px; }
+.auswahl { border-radius: 12px; }
+.segmente { border-radius: 999px; padding: 3px; }
+.segmente span { border-radius: 999px; }
+.kapsel, .marke { border-radius: 999px; }
+.marke { padding: 2px 8px; }
+
+/* Sheets: große Rundung; auf iPad und Laptop als schwebendes Fenster in der Mitte */
+.sheet { border-radius: 28px 28px 0 0; }
+.sheet-kopf { border-bottom: 0; }
+.aktionsblatt .karte { border-radius: var(--radius); }
+.hinweis { color: var(--text); border-radius: 999px; bottom: calc(var(--tab-hoehe) + var(--tab-abstand) + var(--unten) + 14px); }
+
+@media (min-width: 700px) {
+  .schleier { align-items: center; padding: 24px; }
+  .sheet {
+    max-width: 600px;
+    max-height: min(820px, calc(100% - 48px));
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  }
+  .aktionsblatt { max-width: 420px; padding-bottom: 0; }
+  #app { max-width: 720px; }
+}

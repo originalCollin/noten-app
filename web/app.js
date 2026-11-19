@@ -15,6 +15,7 @@
 import * as C from './calc.js';
 import { lade, speichere } from './storage.js';
 import { STARTDATEN } from './startdaten.js';
+import * as Sync from './sync.js';
 
 // ---------------------------------------------------------------------------
 // 1. Zustand
@@ -39,8 +40,12 @@ const TABS = [
 ];
 
 /** Nach jeder Änderung: neu rechnen, speichern, Anzeige auffrischen. */
-function geaendert({ neuZeichnen = false } = {}) {
+function geaendert({ neuZeichnen = false, vomServer = false } = {}) {
   stand = C.normalisiere(stand);
+  if (!vomServer) {
+    Sync.markiereGeaendert();
+    planeSync(1500);
+  }
   ergebnis = C.berechne(stand);
   if (!speichere(stand) && !speicherWarnungGezeigt) {
     speicherWarnungGezeigt = true;
@@ -611,6 +616,7 @@ function oeffneInfoSheet() {
     `<div class="sheet" role="dialog" aria-modal="true" aria-label="Info und Daten">
       <div class="sheet-kopf"><span></span><h2>Info & Daten</h2><button class="rechts" data-fertig>Fertig</button></div>
       <div class="sheet-inhalt">
+        <section class="abschnitt" data-sync-bereich></section>
         <section class="abschnitt">
           <h2 class="abschnitt-titel">Sicherung und Übertragung</h2>
           <div class="gruppe">
@@ -629,11 +635,12 @@ function oeffneInfoSheet() {
             <p>Die Berechnung ist vereinfacht nach der APO-GOSt NRW. <b>Verbindlich ist allein die Berechnung deiner Schule.</b></p>
             <p style="margin-top:8px;color:var(--text-2)">Kursive Werte mit ≈ sind Prognosen: zuerst die Quartalsnote (nur Q2.1), dann deine Annahme für Q2, sonst der gerundete Durchschnitt deiner bisherigen Noten im Fach.</p>
           </div></div>
-          <p class="abschnitt-fuss">Alle Daten bleiben auf diesem Gerät. Es wird nichts ins Internet übertragen. Abi-Rechner 2027 · Format-Version ${C.SCHEMA_VERSION}</p>
+          <p class="abschnitt-fuss">Ohne Synchronisierung bleiben alle Daten auf diesem Gerät. Abi-Rechner 2027 · Format-Version ${C.SCHEMA_VERSION}</p>
         </section>
       </div>
     </div>`,
   );
+  zeichneSyncBereich(el.querySelector('[data-sync-bereich]'), schliesse);
   const datei = el.querySelector('[data-datei]');
   el.querySelector('[data-fertig]').addEventListener('click', schliesse);
   el.querySelector('[data-export]').addEventListener('click', exportiereDatei);
@@ -647,7 +654,7 @@ function oeffneInfoSheet() {
     const ok = await bestaetige({
       titel: 'Alle Daten löschen?',
       text: 'Alle Fächer, Noten und Prüfungen werden von diesem Gerät entfernt. Exportiere sie vorher, wenn du sie behalten willst.',
-      knopf: 'Zurücksetzen',
+      knopf: 'Alle Daten löschen',
     });
     if (!ok) return;
     stand = C.normalisiere({ faecher: [] });
@@ -842,6 +849,171 @@ ansicht.addEventListener('touchend', () => {
 }, { passive: true });
 
 // ----- Start -----
+// ---------------------------------------------------------------------------
+// Synchronisierung zwischen Geräten (siehe sync.js)
+// ---------------------------------------------------------------------------
+
+let syncTimer = null;
+let syncLaeuft = false;
+let syncFehler = null; // Text des letzten Fehlers, null = alles gut
+
+function planeSync(verzoegerung = 0) {
+  if (!Sync.syncCode()) return;
+  clearTimeout(syncTimer);
+  syncTimer = setTimeout(() => synchronisiere(), verzoegerung);
+}
+
+/** Übernimmt einen Stand vom Server, ohne ihn erneut hochzuladen. */
+function uebernimmVomServer(daten, version) {
+  stand = C.normalisiere(daten);
+  Sync.setzeSync(Sync.syncCode(), version, false);
+  geaendert({ neuZeichnen: true, vomServer: true });
+}
+
+/** Lädt Änderungen hoch oder holt neuere Daten. Wird automatisch aufgerufen. */
+async function synchronisiere() {
+  const code = Sync.syncCode();
+  if (!code || syncLaeuft) return;
+  // Nicht mitten in eine Eingabe hinein neu zeichnen.
+  if (document.activeElement?.matches?.('input, select') && !Sync.hatOffeneAenderungen()) {
+    planeSync(3000);
+    return;
+  }
+  syncLaeuft = true;
+  try {
+    if (Sync.hatOffeneAenderungen()) {
+      let antwort = await Sync.speichern(code, stand, Sync.syncVersion());
+      if (!antwort.ok) {
+        // Ein anderes Gerät war schneller. Die Änderung hier ist die neueste Eingabe und gewinnt.
+        antwort = await Sync.speichern(code, stand, antwort.version);
+      }
+      if (antwort.ok) Sync.setzeSync(code, antwort.version, false);
+    } else {
+      const server = await Sync.laden(code);
+      if (server && server.version !== Sync.syncVersion()) uebernimmVomServer(server.daten, server.version);
+    }
+    Sync.merkeSyncZeit();
+    syncFehler = null;
+  } catch {
+    syncFehler = navigator.onLine === false ? 'Offline – wird später nachgeholt' : 'Server nicht erreichbar – wird später nachgeholt';
+  } finally {
+    syncLaeuft = false;
+    document.querySelectorAll('[data-sync-status]').forEach((el) => { el.textContent = syncStatusText(); });
+    if (Sync.hatOffeneAenderungen() && !syncFehler) planeSync(500);
+  }
+}
+
+function syncStatusText() {
+  if (syncFehler) return syncFehler;
+  if (Sync.hatOffeneAenderungen()) return 'Änderungen werden übertragen …';
+  const zeit = Sync.letzterSync();
+  if (!zeit) return 'Noch nicht synchronisiert';
+  return `Synchronisiert ${new Date(zeit).toLocaleString('de-DE', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })} Uhr`;
+}
+
+/** Abschnitt "Synchronisierung" im Info-Sheet. */
+function zeichneSyncBereich(bereich, schliesseSheet) {
+  const code = Sync.syncCode();
+  if (code) {
+    bereich.innerHTML = `
+      <h2 class="abschnitt-titel">Synchronisierung</h2>
+      <div class="gruppe">
+        <div class="zelle"><span class="titel">Dein Sync-Code</span><span class="wert zahl" style="user-select:all;-webkit-user-select:all;color:var(--text);font-weight:600">${esc(code)}</span></div>
+        <div class="zelle"><span class="titel" data-sync-status>${esc(syncStatusText())}</span></div>
+        <button class="zelle aktion" data-sync-kopieren>Code kopieren</button>
+        <button class="zelle aktion" data-sync-jetzt>Jetzt synchronisieren</button>
+        <button class="zelle gefahr" data-sync-ende>Synchronisierung auf diesem Gerät beenden</button>
+      </div>
+      <p class="abschnitt-fuss">Gib diesen Code auf deinen anderen Geräten unter „Mit Code verbinden“ ein. Wer den Code kennt, kann deine Noten sehen und ändern – gib ihn nicht weiter.</p>`;
+    bereich.querySelector('[data-sync-kopieren]').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(code);
+        zeigeHinweis('Code kopiert');
+      } catch {
+        zeigeHinweis('Kopieren nicht möglich – bitte abschreiben');
+      }
+    });
+    bereich.querySelector('[data-sync-jetzt]').addEventListener('click', async () => {
+      await synchronisiere();
+      zeichneSyncBereich(bereich, schliesseSheet);
+    });
+    bereich.querySelector('[data-sync-ende]').addEventListener('click', async () => {
+      const ok = await bestaetige({
+        titel: 'Synchronisierung beenden?',
+        text: 'Deine Daten bleiben auf diesem Gerät und online erhalten. Dieses Gerät gleicht sich nur nicht mehr ab.',
+        knopf: 'Beenden',
+      });
+      if (!ok) return;
+      Sync.beendeSync();
+      zeichneSyncBereich(bereich, schliesseSheet);
+    });
+    return;
+  }
+
+  bereich.innerHTML = `
+    <h2 class="abschnitt-titel">Synchronisierung</h2>
+    <div class="gruppe">
+      <button class="zelle aktion" data-sync-neu>Synchronisierung einrichten</button>
+      <button class="zelle aktion" data-sync-verbinden>Mit Code verbinden</button>
+    </div>
+    <p class="abschnitt-fuss">Gleicht deine Noten automatisch zwischen Geräten ab (z. B. iPhone und Laptop). Richte sie auf dem Gerät mit den aktuellen Daten ein und verbinde die anderen Geräte mit dem angezeigten Code.</p>`;
+
+  bereich.querySelector('[data-sync-neu]').addEventListener('click', async () => {
+    const neu = Sync.neuerCode();
+    try {
+      const antwort = await Sync.speichern(neu, stand, null);
+      if (!antwort.ok) throw new Error('Konflikt');
+      Sync.setzeSync(neu, antwort.version, false);
+      Sync.merkeSyncZeit();
+      syncFehler = null;
+      zeigeHinweis('Synchronisierung eingerichtet');
+    } catch {
+      zeigeHinweis('Keine Verbindung zum Server. Bitte später erneut versuchen.');
+    }
+    zeichneSyncBereich(bereich, schliesseSheet);
+  });
+
+  bereich.querySelector('[data-sync-verbinden]').addEventListener('click', async () => {
+    const eingabe = window.prompt('Sync-Code eingeben (16 Zeichen, z. B. K7QM-2XPA-9RTD-HW4C):');
+    if (eingabe === null) return;
+    const code2 = Sync.normalisiereCode(eingabe);
+    if (!code2) {
+      zeigeHinweis('Der Code muss aus 16 Buchstaben und Ziffern bestehen.');
+      return;
+    }
+    let server;
+    try {
+      server = await Sync.laden(code2);
+    } catch {
+      zeigeHinweis('Keine Verbindung zum Server. Bitte später erneut versuchen.');
+      return;
+    }
+    if (!server) {
+      zeigeHinweis('Zu diesem Code gibt es keine Daten. Bitte prüfe die Eingabe.');
+      return;
+    }
+    const anzahl = C.normalisiere(server.daten).faecher.length;
+    const ok = await bestaetige({
+      titel: 'Mit diesem Code verbinden?',
+      text: `Online sind ${anzahl} ${anzahl === 1 ? 'Fach' : 'Fächer'} gespeichert. Die Daten auf diesem Gerät werden dadurch ersetzt.`,
+      knopf: 'Verbinden und ersetzen',
+    });
+    if (!ok) return;
+    Sync.setzeSync(code2, server.version, false);
+    Sync.merkeSyncZeit();
+    uebernimmVomServer(server.daten, server.version);
+    zeigeHinweis('Verbunden');
+    zeichneSyncBereich(bereich, schliesseSheet);
+  });
+}
+
+// Automatisch abgleichen: beim Start, beim Zurückkehren in die App, bei wieder vorhandenem Netz
+// und jede Minute, solange die App sichtbar ist.
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') planeSync(0); });
+window.addEventListener('online', () => planeSync(0));
+window.addEventListener('focus', () => planeSync(0));
+setInterval(() => { if (document.visibilityState === 'visible') planeSync(0); }, 60000);
+
 function starte() {
   const geladen = lade();
   stand = geladen.stand;
@@ -849,6 +1021,7 @@ function starte() {
   letzteBalken = { blockI: ergebnis.blockI, blockII: ergebnis.blockII, gesamt: ergebnis.gesamt };
   zeichne();
   if (geladen.hinweis) zeigeHinweis(geladen.hinweis);
+  planeSync(0);
 
   // Offline-Modus einschalten (nur über https oder localhost möglich).
   if ('serviceWorker' in navigator) {
